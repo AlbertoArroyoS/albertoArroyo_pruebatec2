@@ -4,6 +4,7 @@
  */
 package com.hackaboss.pruebatecnica2.logica;
 
+import java.io.Serializable;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -16,7 +17,7 @@ import javax.persistence.Table;
  */
 @Table(name = "ciudadanos")
 @Entity
-public class Ciudadano {
+public class Ciudadano implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;

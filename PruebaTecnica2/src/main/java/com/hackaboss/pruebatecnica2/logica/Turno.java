@@ -4,6 +4,7 @@
  */
 package com.hackaboss.pruebatecnica2.logica;
 
+import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -20,7 +21,7 @@ import javax.persistence.TemporalType;
  * @author Alberto
  */
 @Entity
-public class Turno {
+public class Turno implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
