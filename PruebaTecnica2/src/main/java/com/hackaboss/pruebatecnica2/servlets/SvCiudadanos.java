@@ -4,8 +4,11 @@
  */
 package com.hackaboss.pruebatecnica2.servlets;
 
+import com.hackaboss.pruebatecnica2.logica.Ciudadano;
+import com.hackaboss.pruebatecnica2.logica.Controladora;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -18,16 +21,9 @@ import javax.servlet.http.HttpServletResponse;
  */
 @WebServlet(name = "SvCiudadanos", urlPatterns = {"/SvCiudadanos"})
 public class SvCiudadanos extends HttpServlet {
+    
+    Controladora controlLogica = new Controladora();
 
-    /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-     * methods.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
@@ -45,40 +41,40 @@ public class SvCiudadanos extends HttpServlet {
         }
     }
 
-    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
-    /**
-     * Handles the HTTP <code>GET</code> method.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        //Se obtienen los equipos desde la BD
+        List<Ciudadano> listCiudadanos = controlLogica.traerCiudadanos();
+        
+        // Establecer los resultados en la solicitud para que se muestren en el JSP
+        request.setAttribute("ciudadanos", listCiudadanos);
+        
+        // Redirigir de vuelta al formulario
+        request.getRequestDispatcher("index.jsp").forward(request, response);  
     }
 
-    /**
-     * Handles the HTTP <code>POST</code> method.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        
+        // Lógica para manejar el POST
+        String nombre = request.getParameter("nombre_ciudadano");
+        String email = request.getParameter("email_ciudadano");
+        
+        //Crear un nuevo objeto ciudadanos
+        Ciudadano ciudadano = new Ciudadano();
+        ciudadano.setNombre(nombre);
+        ciudadano.setEmail(email);
+        
+        //Se persiste el equipo en la BD
+        controlLogica.crearCiudadano(ciudadano);
+        
+        response.sendRedirect("index.jsp"); 
+        
+
     }
 
-    /**
-     * Returns a short description of the servlet.
-     *
-     * @return a String containing servlet description
-     */
     @Override
     public String getServletInfo() {
         return "Short description";

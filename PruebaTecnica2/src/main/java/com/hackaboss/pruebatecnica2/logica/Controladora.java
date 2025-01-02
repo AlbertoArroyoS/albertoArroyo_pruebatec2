@@ -35,14 +35,25 @@ public class Controladora {
 
     /* TURNOS */
     public void crearTurno(Turno turno, Long ciudadanoId) {
-        // Obtener el Ciudadano a partir del ID
-        Ciudadano ciudadano = controlPersis.ObtenerCiudadano(ciudadanoId);
-        
-        // Setear el Ciudadano en el Turno antes de persistir
-        turno.setCiudadano(ciudadano);
-        
-        controlPersis.crearTurno(turno);
+    // Validar que el ciudadanoId no sea nulo
+    if (ciudadanoId == null) {
+        throw new IllegalArgumentException("El ID del ciudadano no puede ser nulo.");
     }
+
+    // Obtener el Ciudadano a partir del ID
+    Ciudadano ciudadano = controlPersis.ObtenerCiudadano(ciudadanoId);
+
+    // Validar que el ciudadano exista
+    if (ciudadano == null) {
+        throw new IllegalArgumentException("No se encontró un ciudadano con el ID proporcionado.");
+    }
+
+    // Setear el Ciudadano en el Turno antes de persistir
+    turno.setCiudadano(ciudadano);
+
+    // Persistir el turno
+    controlPersis.crearTurno(turno);
+}
 
     public void eliminarTurno(Long id) {
         controlPersis.eliminarTurno(id);
