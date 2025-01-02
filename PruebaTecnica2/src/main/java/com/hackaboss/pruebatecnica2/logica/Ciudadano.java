@@ -5,10 +5,12 @@
 package com.hackaboss.pruebatecnica2.logica;
 
 import java.io.Serializable;
+import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 /**
@@ -25,7 +27,10 @@ public class Ciudadano implements Serializable {
     private String nombre;
 
     private String email;
-
+      
+    @OneToMany(mappedBy = "ciudadano")
+    private List<Turno> listaTurnos;
+     
     public Ciudadano() {
     }
 
@@ -56,6 +61,14 @@ public class Ciudadano implements Serializable {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public List<Turno> getListaTurnos() {
+        return listaTurnos;
+    }
+
+    public void setListaTurnos(List<Turno> listaTurnos) {
+        this.listaTurnos = listaTurnos;
     }
 
     
