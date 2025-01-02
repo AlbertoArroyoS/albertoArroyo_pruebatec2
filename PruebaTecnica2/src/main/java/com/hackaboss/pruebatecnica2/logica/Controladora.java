@@ -128,5 +128,12 @@ public class Controladora {
                 .max(Comparator.comparingInt(Turno::getNumero))
                 .orElse(null); // Devuelve null si no hay turnos para la fecha
     }
+    
+    public List<Turno> obtenerTurnosPorFechaYEstado(Date fecha, String estado) {
+        List<Turno> turnos = obtenerTurnosPorFecha(fecha); // Filtrar primero por fecha
+        return turnos.stream()
+                     .filter(turno -> turno.getEstado().toString().equals(estado)) // Filtrar por estado
+                     .collect(Collectors.toList());
+    }
 
 }

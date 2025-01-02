@@ -12,6 +12,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.logging.Level;
@@ -64,31 +65,36 @@ public class SvTurnos extends HttpServlet {
         // Obtener el parámetro de fecha para la búsqueda
         
         //Obtener el parametro fecha
+        // Obtener los parámetros de fecha y estado para la búsqueda
         String buscarFechaStr = request.getParameter("buscar_fecha");
+        String estadoStr = request.getParameter("estado_turno");
+        List<Turno> listaTurnos = new ArrayList<>();
 
-        // Si se ha proporcionado una fecha, buscar turnos por fecha
-        if (buscarFechaStr != null && !buscarFechaStr.isEmpty()) {
-            try {
-                // Parsear la fecha del parámetro
-                SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        try {
+            // Si se ha proporcionado una fecha, buscar turnos por fecha
+            if (buscarFechaStr != null && !buscarFechaStr.isEmpty()) {
+                SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd"); // Formato de la fecha
                 Date buscarFecha = sdf.parse(buscarFechaStr);
 
-                // Llamar al método para obtener los turnos por la fecha
-                List<Turno> turnosPorFecha = controlLogica.obtenerTurnosPorFecha(buscarFecha);
-                //System.out.println(turnosPorFecha.toString());
-                request.setAttribute("turnos", turnosPorFecha);
-                
-            } catch (ParseException e) {
-                throw new ServletException("Error al parsear la fecha: " + buscarFechaStr, e);
+                // Si también se ha proporcionado un estado, buscar turnos por fecha y estado
+                if (estadoStr != null && !estadoStr.isEmpty()) {
+                    listaTurnos = controlLogica.obtenerTurnosPorFechaYEstado(buscarFecha, estadoStr);
+                } else {
+                    // Si no se ha proporcionado un estado, buscar solo por fecha
+                    listaTurnos = controlLogica.obtenerTurnosPorFecha(buscarFecha);
+                }
+            } else {
+                // Si no se ha proporcionado una fecha, buscar todos los turnos
+                listaTurnos = controlLogica.traerTurnos();
             }
-        } else {
-            // Si no hay fecha seleccionada, obtener todos los turnos
-            List<Turno> listaTurnos = controlLogica.traerTurnos();
-            request.setAttribute("turnos", listaTurnos);
-        }
 
-        // Redirigir a la página para mostrar los resultados
-        request.getRequestDispatcher("index.jsp").forward(request, response);
+            // Establecer los resultados en la solicitud para que se muestren en el JSP
+            request.setAttribute("turnos", listaTurnos);
+            request.getRequestDispatcher("index.jsp").forward(request, response);
+
+        } catch (ParseException e) {
+            throw new ServletException("Error al parsear la fecha: " + buscarFechaStr, e);
+        }
         
     }
 
@@ -112,9 +118,10 @@ public class SvTurnos extends HttpServlet {
             //Crear nuevo turno
             Turno turno = new Turno();
             //turno.setNumero(Integer.parseInt(numeroStr));
+            Estado estado = Estado.valueOf(estadoStr);  // Convertir el String a Enum
             turno.setFecha(fecha);
             turno.setDescripcion(descripcion);
-            turno.setEstado(Estado.EN_ESPERA);
+            turno.setEstado(estado);
             
             //Mandar a persistir el partido, enviado los IDs 
             controlLogica.crearTurno(turno, Long.parseLong(ciudadanoIdStr));

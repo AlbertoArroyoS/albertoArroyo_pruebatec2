@@ -100,14 +100,33 @@
                 <button type="submit" class="btn btn-primary">Ver todos los turnos</button>
             </form>
             
-            <!-- Buscar por fecha -->
+            <br>
+            <!-- Buscar por fecha 
             <form action="SvTurnos" method="GET">
                 <div class="form-group">
                     <label for="buscar_fecha">Buscar turnos por fecha:</label>
                     <input type="date" class="form-control" id="buscar_fecha" name="buscar_fecha" required>
                 </div>
                 <button type="submit" class="btn btn-primary">Buscar Turnos</button>
+            </form>-->
+            
+            <!-- Buscar por estado -->
+            <form action="SvTurnos" method="GET">
+                <label for="buscar_fecha">Fecha:</label>
+                <input type="date" class="form-control" id="buscar_fecha" name="buscar_fecha">
+
+                <label for="estado_turno">Estado:</label>
+                <select class="form-control" id="estado_turno" name="estado_turno">
+                    <option value="">Seleccione un estado</option>
+                    <option value="EN_ESPERA">En espera</option>
+                    <option value="YA_ATENDIDO">Ya atendido</option>
+                </select>
+                
+                <br>
+
+                <button type="submit" class="btn btn-primary">Buscar</button>
             </form>
+            
 
             <br>
             <!-- Resultados en tabla TURNOS -->
