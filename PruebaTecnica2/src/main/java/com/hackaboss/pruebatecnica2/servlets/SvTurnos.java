@@ -52,6 +52,7 @@ public class SvTurnos extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        /*
         // Se obtienen los turnos desde la BD
         List<Turno> listaTurnos = controlLogica.traerTurnos();
 
@@ -59,7 +60,36 @@ public class SvTurnos extends HttpServlet {
         request.setAttribute("turnos", listaTurnos);
   
         // Redirigir de vuelta al formulario
-        request.getRequestDispatcher("index.jsp").forward(request, response);  
+        request.getRequestDispatcher("index.jsp").forward(request, response);  */
+        // Obtener el parámetro de fecha para la búsqueda
+        
+        //Obtener el parametro fecha
+        String buscarFechaStr = request.getParameter("buscar_fecha");
+
+        // Si se ha proporcionado una fecha, buscar turnos por fecha
+        if (buscarFechaStr != null && !buscarFechaStr.isEmpty()) {
+            try {
+                // Parsear la fecha del parámetro
+                SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+                Date buscarFecha = sdf.parse(buscarFechaStr);
+
+                // Llamar al método para obtener los turnos por la fecha
+                List<Turno> turnosPorFecha = controlLogica.obtenerTurnosPorFecha(buscarFecha);
+                //System.out.println(turnosPorFecha.toString());
+                request.setAttribute("turnos", turnosPorFecha);
+                
+            } catch (ParseException e) {
+                throw new ServletException("Error al parsear la fecha: " + buscarFechaStr, e);
+            }
+        } else {
+            // Si no hay fecha seleccionada, obtener todos los turnos
+            List<Turno> listaTurnos = controlLogica.traerTurnos();
+            request.setAttribute("turnos", listaTurnos);
+        }
+
+        // Redirigir a la página para mostrar los resultados
+        request.getRequestDispatcher("index.jsp").forward(request, response);
+        
     }
 
 

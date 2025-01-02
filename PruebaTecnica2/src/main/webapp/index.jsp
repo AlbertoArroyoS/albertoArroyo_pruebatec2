@@ -97,7 +97,16 @@
 
             <hr>
             <form action="SvTurnos" method="GET">
-                <button type="submit" class="btn btn-primary">Ver turnos</button>
+                <button type="submit" class="btn btn-primary">Ver todos los turnos</button>
+            </form>
+            
+            <!-- Buscar por fecha -->
+            <form action="SvTurnos" method="GET">
+                <div class="form-group">
+                    <label for="buscar_fecha">Buscar turnos por fecha:</label>
+                    <input type="date" class="form-control" id="buscar_fecha" name="buscar_fecha" required>
+                </div>
+                <button type="submit" class="btn btn-primary">Buscar Turnos</button>
             </form>
 
             <br>
