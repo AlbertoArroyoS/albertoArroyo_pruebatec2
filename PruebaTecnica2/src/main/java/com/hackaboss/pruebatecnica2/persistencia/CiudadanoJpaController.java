@@ -12,6 +12,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Query;
 import javax.persistence.EntityNotFoundException;
+import javax.persistence.Persistence;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
 
@@ -20,6 +21,11 @@ import javax.persistence.criteria.Root;
  * @author Alberto
  */
 public class CiudadanoJpaController implements Serializable {
+    
+    //Constructor para conectarse a la unidad de persistencia
+    public CiudadanoJpaController() {
+        this.emf = Persistence.createEntityManagerFactory("integradorPU");
+    }    
 
     public CiudadanoJpaController(EntityManagerFactory emf) {
         this.emf = emf;
