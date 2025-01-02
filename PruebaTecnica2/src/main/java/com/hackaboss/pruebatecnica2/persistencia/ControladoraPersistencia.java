@@ -21,11 +21,11 @@ public class ControladoraPersistencia {
     TurnoJpaController turnoJPA = new TurnoJpaController();
     
     /*PARA CIUDADANO*/
-    public void crearEquipo(Ciudadano ciudadano) {
+    public void crearCiudadano(Ciudadano ciudadano) {
         ciudadanoJPA.create(ciudadano);
     }
     
-    public void eliminarEquipo(Long id) {
+    public void eliminarCiudadano(Long id) {
         try {
             ciudadanoJPA.destroy(id);
         } catch (NonexistentEntityException ex) {
@@ -65,7 +65,7 @@ public class ControladoraPersistencia {
         }
     }
     
-    public List<Turno> traerPartidos() {
+    public List<Turno> traerTurnos() {
         return turnoJPA.findTurnoEntities();
     }
     
