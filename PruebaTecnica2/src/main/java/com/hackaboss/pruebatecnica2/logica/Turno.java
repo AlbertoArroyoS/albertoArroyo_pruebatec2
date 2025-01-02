@@ -5,6 +5,7 @@
 package com.hackaboss.pruebatecnica2.logica;
 
 import java.io.Serializable;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -101,6 +102,11 @@ public class Turno implements Serializable {
 
     public void setCiudadano(Ciudadano ciudadano) {
         this.ciudadano = ciudadano;
+    }
+    
+    public String getFechaFormateada(){
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+        return sdf.format(this.fecha);
     }
 
     

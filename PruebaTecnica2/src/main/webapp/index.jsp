@@ -107,8 +107,8 @@
                     <table class="table">
                         <thead>
                             <tr>
-                                <th>Número</th>
                                 <th>Fecha</th>
+                                <th>Número</th>                               
                                 <th>Descripción</th>
                                 <th>Estado</th>
                                 <th>Ciudadano</th>
@@ -117,8 +117,8 @@
                         <tbody>
                             <% for (Turno turno : (List<Turno>) request.getAttribute("turnos")) { %>
                                 <tr>
+                                    <td><%= turno.getFechaFormateada()%></td>
                                     <td><%= turno.getNumero() %></td>
-                                    <td><%= turno.getFecha() %></td>
                                     <td><%= turno.getDescripcion() %></td>
                                     <td><%= turno.getEstado() %></td>
                                     <td><%= turno.getCiudadano().getNombre() %></td>
