@@ -69,9 +69,10 @@
             <h2>Formulario Turno</h2>
             <form action="SvTurnos" method="POST">
                 <div class="form-group">
+                    <!--
                     <label for="numero">Número de Turno:</label>
                     <input type="number" class="form-control" id="numero_turno" name="numero_turno">
-                </div>
+                </div>-->
                 <div class="form-group">
                     <label for="fecha">Fecha:</label>
                     <input type="date" class="form-control" id="fecha_turno" name="fecha_turno">

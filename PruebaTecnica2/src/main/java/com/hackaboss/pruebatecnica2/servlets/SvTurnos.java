@@ -69,7 +69,7 @@ public class SvTurnos extends HttpServlet {
         
         //Obtener datos desde el JSP
 
-        String numeroStr = request.getParameter("numero_turno");
+        //String numeroStr = request.getParameter("numero_turno");
         String fechaStr = request.getParameter("fecha_turno");
         String descripcion = request.getParameter("descripcion_turno");
         String estadoStr = request.getParameter("estado_turno");
@@ -81,7 +81,7 @@ public class SvTurnos extends HttpServlet {
             Date fecha = sdf.parse(fechaStr);
             //Crear nuevo turno
             Turno turno = new Turno();
-            turno.setNumero(Integer.parseInt(numeroStr));
+            //turno.setNumero(Integer.parseInt(numeroStr));
             turno.setFecha(fecha);
             turno.setDescripcion(descripcion);
             turno.setEstado(Estado.EN_ESPERA);

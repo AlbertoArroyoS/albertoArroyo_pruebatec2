@@ -7,9 +7,13 @@ package com.hackaboss.pruebatecnica2.persistencia;
 import com.hackaboss.pruebatecnica2.logica.Ciudadano;
 import com.hackaboss.pruebatecnica2.logica.Turno;
 import com.hackaboss.pruebatecnica2.persistencia.exceptions.NonexistentEntityException;
+import java.text.SimpleDateFormat;
+import java.util.Comparator;
+import java.util.Date;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.util.stream.Collectors;
 
 /**
  *
@@ -75,7 +79,10 @@ public class ControladoraPersistencia {
         } catch (Exception ex) {
             Logger.getLogger(ControladoraPersistencia.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }    
+    }
+    
+    
+
     
 }
 
