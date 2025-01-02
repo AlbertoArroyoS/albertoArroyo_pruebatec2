@@ -57,9 +57,9 @@ public class SvTurnos extends HttpServlet {
 
         // Establecer los resultados en la solicitud para que se muestren en el JSP
         request.setAttribute("turnos", listaTurnos);
-
-        // Redirigir al JSP que mostrará la lista de turnos
-        request.getRequestDispatcher("turnos.jsp").forward(request, response);
+  
+        // Redirigir de vuelta al formulario
+        request.getRequestDispatcher("index.jsp").forward(request, response);  
     }
 
 
@@ -69,10 +69,10 @@ public class SvTurnos extends HttpServlet {
         
         //Obtener datos desde el JSP
 
-        String numeroStr = request.getParameter("numero");
-        String fechaStr = request.getParameter("fecha");
-        String descripcion = request.getParameter("descripcion");
-        String estadoStr = request.getParameter("estado");
+        String numeroStr = request.getParameter("numero_turno");
+        String fechaStr = request.getParameter("fecha_turno");
+        String descripcion = request.getParameter("descripcion_turno");
+        String estadoStr = request.getParameter("estado_turno");
         String ciudadanoIdStr = request.getParameter("ciudadano_id");
         
         try {
