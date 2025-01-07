@@ -5,6 +5,8 @@
 package com.hackaboss.pruebatecnica2.servlets;
 
 import com.hackaboss.pruebatecnica2.logica.Controladora;
+import com.hackaboss.pruebatecnica2.logica.Estado;
+import com.hackaboss.pruebatecnica2.logica.Turno;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -50,21 +52,35 @@ public class SvExtra extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
-        //Obtener el valor obtenido al pulsar eliminar
-        String method = request.getParameter("metodoEliminar");
-
-        if ("DELETE".equalsIgnoreCase(method)) {
+        String metodoExtra = request.getParameter("metodo_extra");
+        Long idTurno = Long.parseLong(request.getParameter("id"));
+        
+        if ("DELETE".equalsIgnoreCase(metodoExtra)) {
             
             try {
-                //Obtener el id del turno del boton pulsado para eliminar
-                long id = Long.parseLong(request.getParameter("id"));
-                controlLogica.eliminarTurno(id);
+
+                controlLogica.eliminarTurno(idTurno);
                 response.sendRedirect("index.jsp"); // Redirige después de eliminar
             } catch (Exception e) {
                 e.printStackTrace();
                 response.sendError(HttpServletResponse.SC_BAD_REQUEST, "Error al eliminar el turno.");
             }
-        } 
+        } else if ("PUT".equals(metodoExtra)) {
+            // Obtener el turno de la base de datos
+            Turno turno = controlLogica.obtenerTurnoPorId(idTurno);
+            if (turno != null) {
+                // Cambiar el estado del turno
+                if (turno.getEstado() == Estado.EN_ESPERA) {
+                    turno.setEstado(Estado.YA_ATENDIDO); // Cambiar a YA_ATENDIDO
+                } else if (turno.getEstado() == Estado.YA_ATENDIDO) {
+                    turno.setEstado(Estado.EN_ESPERA); // Cambiar a EN_ESPERA
+                }
+                // Guardar el turno actualizado
+                controlLogica.editarTurno(turno);
+                response.sendRedirect("index.jsp"); // Redirige después de editar
+            }
+        }
+
     }
 
 

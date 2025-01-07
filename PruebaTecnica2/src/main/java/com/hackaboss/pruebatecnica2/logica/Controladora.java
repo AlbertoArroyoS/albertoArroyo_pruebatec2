@@ -135,5 +135,21 @@ public class Controladora {
                      .filter(turno -> turno.getEstado().toString().equals(estado)) // Filtrar por estado
                      .collect(Collectors.toList());
     }
+    
+    public void actualizarEstadoTurno(long id, Estado nuevoEstado) {
+        Turno turno = controlPersis.obtenerTurno(id);
+        if (turno != null) {
+            turno.setEstado(nuevoEstado);
+            editarTurno(turno); 
+        }
+    }
+    
+    public Turno obtenerTurnoPorId(long id){
+        
+        return controlPersis.obtenerTurno(id);
+        
+    }
+    
+
 
 }

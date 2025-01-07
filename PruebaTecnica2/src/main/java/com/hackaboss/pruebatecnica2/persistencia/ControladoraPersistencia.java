@@ -81,8 +81,8 @@ public class ControladoraPersistencia {
         }
     }
     
-    
-
-    
+    public Turno obtenerTurno(Long id) {
+        return turnoJPA.findTurno(id);
+    } 
 }
 

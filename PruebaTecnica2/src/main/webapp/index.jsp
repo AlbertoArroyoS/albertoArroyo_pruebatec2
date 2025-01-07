@@ -4,6 +4,7 @@
     Author     : Alberto
 --%>
 
+<%@page import="com.hackaboss.pruebatecnica2.logica.Estado"%>
 <%@page import="com.hackaboss.pruebatecnica2.logica.Ciudadano"%>
 <%@page import="com.hackaboss.pruebatecnica2.logica.Turno"%>
 <%@page import="java.util.List"%>
@@ -75,7 +76,7 @@
                 </div>-->
                 <div class="form-group">
                     <label for="fecha">Fecha:</label>
-                    <input type="date" class="form-control" id="fecha_turno" name="fecha_turno">
+                    <input type="date" class="form-control" id="fecha_turno" name="fecha_turno" required>
                 </div>
                 <div class="form-group">
                     <label for="descripcion">Descripción:</label>
@@ -90,7 +91,7 @@
                 </div>
                 <div class="form-group">
                     <label for="ciudadanoId">ID del Ciudadano:</label>
-                    <input type="number" class="form-control" id="ciudadano_id" name="ciudadano_id">
+                    <input type="number" class="form-control" id="ciudadano_id" name="ciudadano_id" required>
                 </div>
                 <button type="submit" class="btn btn-primary">Guardar Turno</button>
             </form>
@@ -113,7 +114,7 @@
             <!-- Buscar por estado -->
             <form action="SvTurnos" method="GET">
                 <label for="buscar_fecha">Fecha:</label>
-                <input type="date" class="form-control" id="buscar_fecha" name="buscar_fecha">
+                <input type="date" class="form-control" id="buscar_fecha" name="buscar_fecha" required>
 
                 <label for="estado_turno">Estado:</label>
                 <select class="form-control" id="estado_turno" name="estado_turno">
@@ -141,21 +142,41 @@
                                 <th>Descripción</th>
                                 <th>Estado</th>
                                 <th>Ciudadano</th>
-                                <th>Acción</th>
+                                <th>Cambiar estado</th>
+                                <th>Eliminar</th>
                             </tr>
                         </thead>
                         <tbody>
                             <% for (Turno turno : (List<Turno>) request.getAttribute("turnos")) { %>
                                 <tr>
-                                    <td><%= turno.getFechaFormateada()%></td>
+                                    <td><%= turno.getFechaFormateada() %></td>
                                     <td><%= turno.getNumero() %></td>
                                     <td><%= turno.getDescripcion() %></td>
-                                    <td><%= turno.getEstado() %></td>
-                                    <td><%= turno.getCiudadano().getNombre() %></td>
+                                    <td><%= turno.getEstado() %></td>                         
+                                    <td><%= turno.getCiudadano().getNombre() %></td>                                   
+                                    <td>
+                                        <!-- Formulario para cambiar el estado del turno -->
+                                        <form action="SvExtra" method="POST">
+                                            <input type="hidden" name="metodo_extra" value="PUT">
+                                            <input type="hidden" name="id" value="<%= turno.getId() %>">
+
+                                            <!-- Aquí corregimos la concatenación de la clase -->
+                                            <button type="submit" class="btn 
+                                                <%= turno.getEstado() == Estado.EN_ESPERA ? "btn-success" : "btn-warning" %> 
+                                                btn-sm">
+
+                                                <% if (turno.getEstado() == Estado.EN_ESPERA) { %>
+                                                    Marcar como ATENDIDO
+                                                <% } else { %>
+                                                    Marcar como EN ESPERA
+                                                <% } %>
+                                            </button>
+                                        </form>
+                                    </td>
                                     <td>
                                         <!-- Formulario para enviar el id del turno y eliminarlo en el ServletExtra-->
                                         <form action="SvExtra" method="POST" onsubmit="return confirm('¿Estás seguro de eliminar este turno?');">
-                                            <input type="hidden" name="metodoEliminar" value="DELETE"> <!-- Para indicar que es DELETE -->
+                                            <input type="hidden" name="metodo_extra" value="DELETE"> <!-- Para indicar que es DELETE -->
                                             <input type="hidden" name="id" value="<%= turno.getId() %>">
                                             <button type="submit" class="btn btn-danger btn-sm">Eliminar</button>
                                         </form>
