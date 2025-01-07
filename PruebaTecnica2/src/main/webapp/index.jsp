@@ -22,21 +22,22 @@
         <div class="container mt-4">
             <!-- Formulario para agregar Ciudadano -->
             <h2>Formulario Ciudadano</h2>
+            <br>
             <form action="SvCiudadanos" method="POST">
                 <div class="form-group">
                     <label for="nombre">Nombre:</label>
-                    <input type="text" class="form-control" id="nombre_ciudadano" name="nombre_ciudadano">
+                    <input type="text" class="form-control" id="nombre_ciudadano" name="nombre_ciudadano" required>
                 </div>
                 <div class="form-group">
                     <label for="email">Email:</label>
-                    <input type="email" class="form-control" id="email_ciudadano" name="email_ciudadano">
+                    <input type="email" class="form-control" id="email_ciudadano" name="email_ciudadano" required>
                 </div>
                 <button type="submit" class="btn btn-primary">Guardar Ciudadano</button>
             </form>
 
             <hr>
             <form action="SvCiudadanos" method="GET">
-                <button type="submit" class="btn btn-primary">Ver ciudadanos</button>
+                <button type="submit" class="btn btn-info">Ver ciudadanos</button>
             </form>
 
             <br>
@@ -68,6 +69,7 @@
             <hr>
             <!-- Formulario para agregar Turno -->
             <h2>Formulario Turno</h2>
+            <br>
             <form action="SvTurnos" method="POST">
                 <div class="form-group">
                     <!--
@@ -80,11 +82,11 @@
                 </div>
                 <div class="form-group">
                     <label for="descripcion">Descripción:</label>
-                    <input type="text" class="form-control" id="descripcion_turno" name="descripcion_turno">
+                    <input type="text" class="form-control" id="descripcion_turno" name="descripcion_turno" required>
                 </div>
                 <div class="form-group">
                     <label for="estado">Estado:</label>
-                    <select class="form-control" id="estado_turno" name="estado_turno">
+                    <select class="form-control" id="estado_turno" name="estado_turno" required>
                         <option value="EN_ESPERA">En espera</option>
                         <option value="YA_ATENDIDO">Ya atendido</option>
                     </select>
@@ -95,10 +97,12 @@
                 </div>
                 <button type="submit" class="btn btn-primary">Guardar Turno</button>
             </form>
-
+            
             <hr>
+            <h2>Turnos</h2>
+            <br>
             <form action="SvTurnos" method="GET">
-                <button type="submit" class="btn btn-primary">Ver todos los turnos</button>
+                <button type="submit" class="btn btn-info">Ver todos los turnos</button>
             </form>
             
             <br>
@@ -112,6 +116,9 @@
             </form>-->
             
             <!-- Buscar por estado -->
+            <hr>
+            <h2>Filtrar Turnos</h2>
+            <br>
             <form action="SvTurnos" method="GET">
                 <label for="buscar_fecha">Fecha:</label>
                 <input type="date" class="form-control" id="buscar_fecha" name="buscar_fecha" required>
@@ -125,7 +132,7 @@
                 
                 <br>
 
-                <button type="submit" class="btn btn-primary">Buscar</button>
+                <button type="submit" class="btn btn-info">Buscar</button>
             </form>
             
 
