@@ -141,6 +141,7 @@
                                 <th>Descripción</th>
                                 <th>Estado</th>
                                 <th>Ciudadano</th>
+                                <th>Acción</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -151,6 +152,14 @@
                                     <td><%= turno.getDescripcion() %></td>
                                     <td><%= turno.getEstado() %></td>
                                     <td><%= turno.getCiudadano().getNombre() %></td>
+                                    <td>
+                                        <!-- Formulario para enviar el id del turno y eliminarlo en el ServletExtra-->
+                                        <form action="SvExtra" method="POST" onsubmit="return confirm('¿Estás seguro de eliminar este turno?');">
+                                            <input type="hidden" name="metodoEliminar" value="DELETE"> <!-- Para indicar que es DELETE -->
+                                            <input type="hidden" name="id" value="<%= turno.getId() %>">
+                                            <button type="submit" class="btn btn-danger btn-sm">Eliminar</button>
+                                        </form>
+                                    </td>
                                 </tr>
                             <% } %>
                         </tbody>
