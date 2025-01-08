@@ -21,7 +21,19 @@ public class Controladora {
 
     /* CIUDADANOS */
     public void crearCiudadano(Ciudadano ciudadano) {
-        controlPersis.crearCiudadano(ciudadano);
+        List<Ciudadano> listaAux = controlPersis.traerCiudadanos();
+        
+        // Verificar si el nombre del ciudadano ya existe usando Stream, quitando los espacios del principio y del final
+        boolean existe = listaAux.stream()
+                                 .anyMatch(c -> c.getNombre().equalsIgnoreCase(ciudadano.getNombre().trim()));
+
+        if (!existe) {
+            // Si no existe, crear el ciudadano
+            controlPersis.crearCiudadano(ciudadano);
+        }else{
+            System.out.println("El ciudadano ya existe");
+        }
+
     }
 
     public void eliminarCiudadano(Long id) {
