@@ -2,6 +2,10 @@
 
 # Gestión de Turnos - Prueba Técnica 2 (HACK A BOSS)
 
+## Wiki de la aplicación
+
+https://github.com/AlbertoArroyoS/albertoArroyo_pruebatec2/wiki
+
 ## Descripción
 
 Esta aplicación permite la administración de turnos asignados a ciudadanos para diversos trámites. Los turnos tienen:
