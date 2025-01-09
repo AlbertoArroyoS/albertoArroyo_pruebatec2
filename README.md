@@ -14,13 +14,16 @@ Los usuarios pueden realizar operaciones CRUD (Crear, Leer, Actualizar, Borrar) 
 ## Funcionalidades
 
 ### Ciudadanos
-- **Crear ciudadano**: Añadir nombre y email. No se permite duplicidad de datos.
-- **Listar ciudadanos**: Mostrar ciudadanos registrados con opciones para borrar ciudadanos y sus turnos asignados.
+- **Crear ciudadano**: Añadir nombre y email a la base de datos. No se permite duplicidad de datos, ni nombre ni email.
+- **Listar ciudadanos**: Mostrar ciudadanos registrados en la base de datos.
+- **Borrar ciudadanos**: Al borrar el ciudadano se borraran tambien todos los turnos que tenga asignados.
 
 ### Turnos
 - **Agregar nuevo turno**: Ingresar fecha, descripción, estado e ID de ciudadano. El turno se genera automáticamente como el primer número disponible del día.
 - **Listar turnos**: Ver todos los turnos con detalles y opciones para cambiar el estado o eliminarlos.
 - **Filtrar turnos**: Buscar turnos por fecha o estado (En espera / Ya atendido).
+- **Borrar turnos**: Borrar turno al pulsar el botón de la lista.
+- **Modificar estado**: Cambiar el estado de los turnos en espera y ya atendidos.
 
 ## Tecnologías utilizadas
 - **Java 17**: Backend y lógica de negocio.
