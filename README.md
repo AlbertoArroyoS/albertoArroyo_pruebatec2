@@ -23,7 +23,7 @@ Los usuarios pueden realizar operaciones CRUD (Crear, Leer, Actualizar, Borrar) 
 - **Listar turnos**: Ver todos los turnos con detalles y opciones para cambiar el estado o eliminarlos.
 - **Filtrar turnos**: Buscar turnos por fecha o estado (En espera / Ya atendido).
 - **Borrar turnos**: Borrar turno al pulsar el botón de la lista.
-- **Modificar estado**: Cambiar el estado de los turnos en espera y ya atendidos.
+- **Modificar estado del turno**: Cambiar el estado de los turnos en espera y ya atendidos en la lista de turnos.
 
 ## Tecnologías utilizadas
 - **Java 17**: Backend y lógica de negocio.
