@@ -51,6 +51,7 @@
                                 <th>ID</th>
                                 <th>Nombre</th>
                                 <th>Email</th>
+                                <th>Acciones</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -59,6 +60,16 @@
                                     <td><%= ciudadano.getId() %></td>
                                     <td><%= ciudadano.getNombre() %></td>
                                     <td><%= ciudadano.getEmail() %></td>
+                                    <td><%= ciudadano.getEmail() %></td>
+                                    <td>
+                                        <form action="SvExtraCiudadanos" method="POST" onsubmit="return confirm('¿Estás seguro de eliminar este ciudadano y sus turnos?');">
+                                            <input type="hidden" name="metodo_extra" value="DELETE_CIUDADANO">
+                                            <input type="hidden" name="id_ciudadano" value="<%= ciudadano.getId() %>">
+                                            <button type="submit" class="btn btn-danger btn-sm">Eliminar</button>
+                                        </form>
+                                    </td>
+                                    
+                                    
                                 </tr>
                             <% } %>
                         </tbody>
@@ -163,7 +174,7 @@
                                     <td><%= turno.getCiudadano().getNombre() %></td>                                   
                                     <td>
                                         <!-- Formulario para cambiar el estado del turno -->
-                                        <form action="SvExtra" method="POST">
+                                        <form action="SvExtraTurnos" method="POST">
                                             <input type="hidden" name="metodo_extra" value="PUT">
                                             <input type="hidden" name="id" value="<%= turno.getId() %>">
 
@@ -182,7 +193,7 @@
                                     </td>
                                     <td>
                                         <!-- Formulario para enviar el id del turno y eliminarlo en el ServletExtra-->
-                                        <form action="SvExtra" method="POST" onsubmit="return confirm('¿Estás seguro de eliminar este turno?');">
+                                        <form action="SvExtraTurnos" method="POST" onsubmit="return confirm('¿Estás seguro de eliminar este turno?');">
                                             <input type="hidden" name="metodo_extra" value="DELETE"> <!-- Para indicar que es DELETE -->
                                             <input type="hidden" name="id" value="<%= turno.getId() %>">
                                             <button type="submit" class="btn btn-danger btn-sm">Eliminar</button>

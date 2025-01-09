@@ -6,6 +6,7 @@ package com.hackaboss.pruebatecnica2.logica;
 
 import java.io.Serializable;
 import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -27,8 +28,9 @@ public class Ciudadano implements Serializable {
     private String nombre;
 
     private String email;
-      
-    @OneToMany(mappedBy = "ciudadano")
+    
+    //Si se borra un ciudadano, se borran los turnos asociados a ese ciudadano  
+    @OneToMany(mappedBy = "ciudadano", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Turno> listaTurnos;
      
     public Ciudadano() {
