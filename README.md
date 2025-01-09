@@ -1,50 +1,54 @@
 # Alberto Arroyo Santofimia
 
-HACK A BOSS
+# Gestión de Turnos - Prueba Técnica 2 (HACK A BOSS)
 
-Prueba Técnica 2 - Desarrollo de una aplicación de gestión de turnos
+## Descripción
 
+Esta aplicación permite la administración de turnos asignados a ciudadanos para diversos trámites. Los turnos tienen:
+- Un número generado automáticamente en función de los turnos del día elegido.
+- Una fecha y una descripción del trámite.
+- Un estado que puede ser **"En espera"** o **"Ya atendido"**.
 
-**Descripción**
+Los usuarios pueden realizar operaciones CRUD (Crear, Leer, Actualizar, Borrar) tanto sobre turnos como ciudadanos.
 
-Esta es una aplicación de gestión de turnos, cuyo objetivo es permitir la administración de turnos asignados a ciudadanos para diversos trámites. Los turnos tienen un número, una fecha y una descripción del trámite, y un estado que puede ser "En espera" o "Ya atendido". El número se genera automáticamente dependiendo de los turnos que haya el día elegido. Los usuarios pueden realizar operaciones CRUD (Crear, Leer, Actualizar, Borrar) sobre los turnos.
+## Funcionalidades
 
-**Funcionalidades**
+### Ciudadanos
+- **Crear ciudadano**: Añadir nombre y email. No se permite duplicidad de datos.
+- **Listar ciudadanos**: Mostrar ciudadanos registrados con opciones para borrar ciudadanos y sus turnos asignados.
 
-- **Crear ciudadano**: Permite al usuario ingresar el nombre y el email del ciudadano. No se permite añadir ciudadanos si ya existe el nombre o correo electrónico en la base de datos.
-- **Listar ciudadanos**: Muestra los ciudadanos dados de alta, permite borrar los ciudadanos y las citas que tiene asignadas el ciudadano.
-- **Agregar un nuevo turno**: Permite al usuario ingresar información sobre un nuevo turno, como la fecha, la descripción del trámite, estado y el id del ciudadano asignado. El turno es auto incremental, se asignará el primer numero disponible del día elegido.
-- **Listar turnos**: Muestra todos los turnos en la base de datos, con detalles del ciudadano asignado con opciones de cambiar el estado del turno y eliminarlo.
-- **Filtrar turnos**: Permite al usuario filtrar turnos por fecha y estado (En espera / Ya atendido).
+### Turnos
+- **Agregar nuevo turno**: Ingresar fecha, descripción, estado e ID de ciudadano. El turno se genera automáticamente como el primer número disponible del día.
+- **Listar turnos**: Ver todos los turnos con detalles y opciones para cambiar el estado o eliminarlos.
+- **Filtrar turnos**: Buscar turnos por fecha o estado (En espera / Ya atendido).
 
-**Tecnologías utilizadas**
+## Tecnologías utilizadas
+- **Java 17**: Backend y lógica de negocio.
+- **JSP (JavaServer Pages)**: Frontend.
+- **JPA (Java Persistence API)**: Interacción con base de datos.
+- **Servlets**: Manejo de solicitudes web.
+- **Bootstrap**: Diseño y estructura de la interfaz.
+- **Funciones Lambda, Optionals y Streams**: Optimización y modernización del código.
 
-- **Java 17**: Para la lógica de la aplicación y el backend.
-- **JSP (JavaServer Pages)**: Para la interfaz de usuario (Frontend).
-- **JPA (Java Persistence API)**: Para interactuar con la base de datos.
-- **Servlets**: Para el manejo de la lógica de la aplicación web.
-- **Bootstrap**: Para el diseño del frontend y la estructura de la interfaz.
-- **Funciones Lambda, Optionals, Streams**: Para implementar funcionalidades avanzadas y optimización del código.
-
-**Cómo ejecutar la aplicación**
+## Cómo ejecutar la aplicación
 
 1. **Clonar el repositorio**:
-
+   ```bash
    git clone https://github.com/AlbertoArroyoS/albertoArroyo_pruebatec2.git
 
-1. **Instalar dependencias** (si las hubiera): La aplicación utiliza JPA, así que asegúrate de tener configurada la base de datos y las dependencias necesarias en tu proyecto en ProjectFiles/pom.xml
-1. **Configurar base de datos**: La aplicación debe tener configurada una fuente de datos que apunte a tu base de datos. Esta preconfigurada para una base de datos en MySQL con el nombre turnos. Puede cambiar la configuración en 
 
-   Other Sources/src/main/resurces/META-INF/persistence.xml
+1. **Instalar dependencias** : Configura las dependencias necesarias en pom.xml para habilitar JPA y otras funcionalidades.
+1. **Configurar base de datos**: La aplicación está preconfigurada para usar una base de datos MySQL llamada turnos.
+   Edita la configuración en el archivo:
+   ```bash
+   src/main/resources/META-INF/persistence.xml
 
    <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/turnos?serverTimezone=UTC"/>
 
-1. **Compilar y ejecutar la aplicación**: La herramienta usada para el servidor web ha sido Tomcat 9.0.98, debes desplegar la aplicación en el servidor. Asegúrate de que el servidor esté ejecutándose antes de intentar acceder a la aplicación.
+1. **Ejecutar la aplicación**: Usa Tomcat 9.0.98 para desplegar la aplicación. Asegúrate de que el servidor esté ejecutándose.
 1. **Acceder a la aplicación**: Una vez que el servidor esté en funcionamiento, abre tu navegador web y dirígete a
-
+   ```bash
    http://localhost:8080/PruebaTecnica2/SvCiudadanos?
-
-   ` `Allí podrás ver la interfaz de usuario para agregar, listar y cambiar el estado de los turnos.
 
 **Estructura del proyecto**
 
