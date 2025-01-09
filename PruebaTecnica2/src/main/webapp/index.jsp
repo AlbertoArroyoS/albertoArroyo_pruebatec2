@@ -60,7 +60,6 @@
                                     <td><%= ciudadano.getId() %></td>
                                     <td><%= ciudadano.getNombre() %></td>
                                     <td><%= ciudadano.getEmail() %></td>
-                                    <td><%= ciudadano.getEmail() %></td>
                                     <td>
                                         <form action="SvExtraCiudadanos" method="POST" onsubmit="return confirm('¿Estás seguro de eliminar este ciudadano y sus turnos?');">
                                             <input type="hidden" name="metodo_extra" value="DELETE_CIUDADANO">
