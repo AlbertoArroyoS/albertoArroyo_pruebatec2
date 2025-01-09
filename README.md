@@ -30,7 +30,7 @@ Esta es una aplicación de gestión de turnos, cuyo objetivo es permitir la admi
 
 1. **Clonar el repositorio**:
 
-   git clone https://github.com/AlbertoArroyoS/albertoArroyo\_pruebatec2.git
+   git clone https://github.com/AlbertoArroyoS/albertoArroyo_pruebatec2.git
 
 1. **Instalar dependencias** (si las hubiera): La aplicación utiliza JPA, así que asegúrate de tener configurada la base de datos y las dependencias necesarias en tu proyecto en ProjectFiles/pom.xml
 1. **Configurar base de datos**: La aplicación debe tener configurada una fuente de datos que apunte a tu base de datos. Esta preconfigurada para una base de datos en MySQL con el nombre turnos. Puede cambiar la configuración en 
