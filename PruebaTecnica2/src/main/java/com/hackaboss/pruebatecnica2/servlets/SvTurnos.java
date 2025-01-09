@@ -24,7 +24,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- *
+ * La clase `SvTurnos` es un servlet que maneja las solicitudes HTTP relacionadas con la entidad `Turno`.
+ * Proporciona métodos para procesar solicitudes GET y POST.
+ * 
  * @author Alberto
  */
 @WebServlet(name = "SvTurnos", urlPatterns = {"/SvTurnos"})

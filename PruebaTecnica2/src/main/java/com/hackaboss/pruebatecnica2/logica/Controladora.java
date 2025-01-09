@@ -12,7 +12,9 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 /**
- *
+ * Clase que actúa como intermediaria entre la capa de presentación y la capa de persistencia.
+ * Gestiona las operaciones CRUD (Crear, Leer, Actualizar, Eliminar) para las entidades `Ciudadano` y `Turno`.
+ * 
  * @author Alberto
  */
 public class Controladora {
@@ -20,6 +22,12 @@ public class Controladora {
     ControladoraPersistencia controlPersis = new ControladoraPersistencia();
 
     /* CIUDADANOS */
+    
+    /**
+     * Crea un nuevo ciudadano si no existe uno con el mismo nombre o email.
+     * 
+     * @param ciudadano El ciudadano a crear.
+     */
     public void crearCiudadano(Ciudadano ciudadano) {
         List<Ciudadano> listaAux = controlPersis.traerCiudadanos();
         
@@ -56,6 +64,12 @@ public class Controladora {
 
     /*** TURNOS ***/
     
+    /**
+     * Crea un nuevo turno para un ciudadano específico.
+     * 
+     * @param turno El turno a crear.
+     * @param ciudadanoId El ID del ciudadano asociado al turno.
+     */
     public void crearTurno(Turno turno, Long ciudadanoId) {
         
         // Obtener el Ciudadano a partir del ID
@@ -102,7 +116,12 @@ public class Controladora {
     
     // METODOS PROPIOS
     
-    //Metodo para obtener toda la lista por fecha
+    /**
+     * Obtiene una lista de turnos para una fecha específica.
+     * 
+     * @param fecha La fecha para la cual se desean obtener los turnos.
+     * @return Una lista de turnos para la fecha dada.
+     */
     public List<Turno> obtenerTurnosPorFecha(Date fecha) {
         // Crear un SimpleDateFormat para formatear las fechas
         SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
@@ -124,7 +143,12 @@ public class Controladora {
     }
 
     
-    //Metodo para obtener el ultimo turno en una fecha para que cuando alguien pida se autoincremente
+    /**
+     * Obtiene el último turno registrado para una fecha específica.
+     * 
+     * @param fecha La fecha para la cual se desea obtener el último turno.
+     * @return El último turno registrado para la fecha dada, o null si no hay turnos.
+     */
     public Turno obtenerUltimoTurnoPorFecha(Date fecha) {
         
         // Obtener todos los turnos desde la capa de persistencia
@@ -147,6 +171,13 @@ public class Controladora {
                 .orElse(null); // Devuelve null si no hay turnos para la fecha
     }
     
+    /**
+     * Obtiene una lista de turnos para una fecha y estado específicos.
+     * 
+     * @param fecha La fecha para la cual se desean obtener los turnos.
+     * @param estado El estado de los turnos a filtrar.
+     * @return Una lista de turnos para la fecha y estado dados.
+     */
     public List<Turno> obtenerTurnosPorFechaYEstado(Date fecha, String estado) {
         List<Turno> turnos = obtenerTurnosPorFecha(fecha); // Filtrar primero por fecha
         return turnos.stream()
@@ -154,6 +185,12 @@ public class Controladora {
                      .collect(Collectors.toList());
     }
     
+    /**
+     * Actualiza el estado de un turno específico.
+     * 
+     * @param id El ID del turno a actualizar.
+     * @param nuevoEstado El nuevo estado del turno.
+     */
     public void actualizarEstadoTurno(long id, Estado nuevoEstado) {
         Turno turno = controlPersis.obtenerTurno(id);
         if (turno != null) {
@@ -162,6 +199,13 @@ public class Controladora {
         }
     }
     
+    
+    /**
+     * Obtiene un turno por su ID.
+     * 
+     * @param id El ID del turno a obtener.
+     * @return El turno correspondiente al ID dado.
+     */
     public Turno obtenerTurnoPorId(long id){
         
         return controlPersis.obtenerTurno(id);
