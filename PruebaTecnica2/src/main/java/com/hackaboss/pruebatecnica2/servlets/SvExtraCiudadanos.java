@@ -14,7 +14,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- *
+ * La clase `SvExtraCiudadanos` es un servlet que maneja solicitudes HTTP adicionales relacionadas con la entidad `Ciudadano`.
+ * Proporciona métodos para procesar solicitudes GET y POST, incluyendo la eliminación de ciudadanos.
+ * 
  * @author Alberto
  */
 @WebServlet(name = "SvExtraCiudadanos", urlPatterns = {"/SvExtraCiudadanos"})
@@ -43,10 +45,10 @@ public class SvExtraCiudadanos extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
-        
+        processRequest(request, response);     
     }
-
+    
+    //Eliminar un ciudadano
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
