@@ -1,5 +1,8 @@
-# albertoArroyo_pruebatec2
-Desarrollo de una aplicación de gestión de turnos
+# Alberto Arroyo Santofimia
+
+HACK A BOSS
+
+Prueba Técnica 2 - Desarrollo de una aplicación de gestión de turnos
 
 **Turnero - Gestión de Turnos**
 
@@ -46,7 +49,7 @@ git clone https://github.com/AlbertoArroyoS/albertoArroyo\_pruebatec2.git
 
 **Estructura del proyecto**
 
-![image](https://github.com/user-attachments/assets/7aed7688-f484-4564-9bf4-a83882126290)
+   ![image](https://github.com/user-attachments/assets/7aed7688-f484-4564-9bf4-a83882126290)
 
 
 **Archivos importantes**
@@ -56,7 +59,6 @@ git clone https://github.com/AlbertoArroyoS/albertoArroyo\_pruebatec2.git
 1. **Estado.java**: Enum que define los posibles estados de un turno ("EN\_ESPERA", "YA\_ATENDIDO").
 1. **ControladoraPersistencia.java**: Clase que maneja las operaciones CRUD para las entidades.
 1. **Controladora**.java: Actúa como intermediaria entre la capa de presentación y la capa de persistencia.
-1. ` `\* Gestiona las operaciones CRUD (Crear, Leer, Actualizar, Eliminar) para las entidades `Ciudadano` y `Turno`.
 1. **Paquete servlets**: Para maneja las solicitudes HTTP para agregar, listar, eliminar y cambiar el estado de los turnos/ciudadanos.
 1. **index.jsp**: Página principal donde los usuarios pueden crear ciudadanos y turnos
 
