@@ -43,9 +43,9 @@ Los usuarios pueden realizar operaciones CRUD (Crear, Leer, Actualizar, Borrar) 
 1. **Instalar dependencias** : Configura las dependencias necesarias en pom.xml para habilitar JPA y otras funcionalidades.
 1. **Configurar base de datos**: La aplicación está preconfigurada para usar una base de datos MySQL llamada turnos.
    Edita la configuración en el archivo:
+   
+   Other Sources/src/main/resources/META-INF/persistence.xml
    ```bash
-   src/main/resources/META-INF/persistence.xml
-
    <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/turnos?serverTimezone=UTC"/>
 
 1. **Ejecutar la aplicación**: Usa Tomcat 9.0.98 para desplegar la aplicación. Asegúrate de que el servidor esté ejecutándose.
