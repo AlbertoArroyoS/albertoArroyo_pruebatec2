@@ -16,13 +16,13 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * La clase `SvExtraTurno` es un servlet que maneja las solicitudes HTTP relacionadas con operaciones adicionales sobre la entidad `Turno`.
+ * La clase `SvExtraTurnos` es un servlet que maneja las solicitudes HTTP relacionadas con operaciones adicionales sobre la entidad `Turno`.
  * Proporciona métodos para procesar solicitudes GET y POST.
  * Permite eliminar un turno por su ID y cambiar el estado de un turno.
  * 
  * @author Alberto
  */
-@WebServlet(name = "SvExtra", urlPatterns = {"/SvExtra"})
+@WebServlet(name = "SvExtraTurnos", urlPatterns = {"/SvExtraTurnos"})
 public class SvExtraTurnos extends HttpServlet {
     
     Controladora controlLogica = new Controladora();
