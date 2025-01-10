@@ -75,7 +75,7 @@ Los usuarios pueden realizar operaciones CRUD (Crear, Leer, Actualizar, Borrar) 
                            ├── ControladoraPersistencia.java
                            ├── TurnoJpaController.java
                            ├── /exceptions
-                       ├── /resources
+                       ├── /servlets
                            ├── SvCiudadanos.java
                            ├── SvExtraCiudadanos.java
                            ├── SvTurnos.java
