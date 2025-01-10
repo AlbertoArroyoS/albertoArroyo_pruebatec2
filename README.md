@@ -58,7 +58,7 @@ Los usuarios pueden realizar operaciones CRUD (Crear, Leer, Actualizar, Borrar) 
    http://localhost:8080/PruebaTecnica2/SvCiudadanos?
 
 **Estructura del proyecto**
-```
+   ```
    /src
   ├── /main
        ├── /java
@@ -84,7 +84,7 @@ Los usuarios pueden realizar operaciones CRUD (Crear, Leer, Actualizar, Borrar) 
            ├── /META-INF
                ├── persistence.xml
 
-```
+   ```
 
 **Archivos importantes**
 
