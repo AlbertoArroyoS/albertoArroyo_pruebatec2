@@ -59,7 +59,31 @@ Los usuarios pueden realizar operaciones CRUD (Crear, Leer, Actualizar, Borrar) 
 
 **Estructura del proyecto**
 
-   ![image](https://github.com/user-attachments/assets/7aed7688-f484-4564-9bf4-a83882126290)
+   /src
+  ├── /main
+       ├── /java
+           ├── /com
+               ├── /hackaboss
+                   ├── /pruebatecnica2
+                       ├── /logica
+                           ├── Ciudadano.java
+                           ├── Controladora.java
+                           ├── Estado.java
+                           ├── Turno.java
+                       ├── /persistencia
+                           ├── CiudadanoJpaController.java
+                           ├── ControladoraPersistencia.java
+                           ├── TurnoJpaController.java
+                           ├── /exceptions
+                       ├── /resources
+                           ├── SvCiudadanos.java
+                           ├── SvExtraCiudadanos.java
+                           ├── SvTurnos.java
+                           ├── SvExtraTurnos.java
+       ├── /resources
+           ├── /META-INF
+               ├── persistence.xml
+
 
 
 **Archivos importantes**
