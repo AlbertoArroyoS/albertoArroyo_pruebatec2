@@ -101,7 +101,7 @@ Los usuarios pueden realizar operaciones CRUD (Crear, Leer, Actualizar, Borrar) 
         </dependency> 
     </dependencies>
    ```
-1. Actualizar version >maven-war-plugin en el pom.xml
+1. **Version maven-war-plugin**: actualizada a 3.4.0 en el pom.xml
    ```
    <plugin>
        <groupId>org.apache.maven.plugins</groupId>
