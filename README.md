@@ -44,7 +44,7 @@ Los usuarios pueden realizar operaciones CRUD (Crear, Leer, Actualizar, Borrar) 
    git clone https://github.com/AlbertoArroyoS/albertoArroyo_pruebatec2.git
 
 
-1. **Instalar dependencias** : Configura las dependencias necesarias en pom.xml para habilitar JPA y otras funcionalidades.
+1. **Dependencias instaladas en el proyecto** : Configura las dependencias necesarias en pom.xml para habilitar JPA y otras funcionalidades.
    ```
    <dependencies>
         <dependency>
