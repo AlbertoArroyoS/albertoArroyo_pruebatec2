@@ -127,30 +127,30 @@ Los usuarios pueden realizar operaciones CRUD (Crear, Leer, Actualizar, Borrar) 
 
 **Estructura del proyecto**
    ```
-   /src
-  ├── /main
-       ├── /java
-           ├── /com
-               ├── /hackaboss
-                   ├── /pruebatecnica2
-                       ├── /logica
-                           ├── Ciudadano.java
-                           ├── Controladora.java
-                           ├── Estado.java
-                           ├── Turno.java
-                       ├── /persistencia
-                           ├── CiudadanoJpaController.java
-                           ├── ControladoraPersistencia.java
-                           ├── TurnoJpaController.java
-                           ├── /exceptions
-                       ├── /servlets
-                           ├── SvCiudadanos.java
-                           ├── SvExtraCiudadanos.java
-                           ├── SvTurnos.java
-                           ├── SvExtraTurnos.java
-       ├── /resources
-           ├── /META-INF
-               ├── persistence.xml
+      /src
+     ├── /main
+          ├── /java
+              ├── /com
+                  ├── /hackaboss
+                      ├── /pruebatecnica2
+                          ├── /logica
+                              ├── Ciudadano.java
+                              ├── Controladora.java
+                              ├── Estado.java
+                              ├── Turno.java
+                          ├── /persistencia
+                              ├── CiudadanoJpaController.java
+                              ├── ControladoraPersistencia.java
+                              ├── TurnoJpaController.java
+                              ├── /exceptions
+                          ├── /servlets
+                              ├── SvCiudadanos.java
+                              ├── SvExtraCiudadanos.java
+                              ├── SvTurnos.java
+                              ├── SvExtraTurnos.java
+          ├── /resources
+              ├── /META-INF
+                  ├── persistence.xml
 
    ```
 
